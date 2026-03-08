@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luminary — Mood & Emotional Wellness</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar">
+    <a href="#" class="logo" data-section="dashboard">
+      <span class="logo-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.8"/>
+        </svg>
+      </span>
+      <span class="logo-text">Luminary</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#" data-section="dashboard">Dashboard</a></li>
+      <li class="nav-dropdown">
+        <a href="#" class="dropdown-trigger">Log Mood ▾</a>
+        <div class="dropdown-menu">
+          <a href="#" data-section="log-mood">Quick Log</a>
+          <a href="#" data-section="journal">Journal Entry</a>
+        </div>
+      </li>
+      <li><a href="#" data-section="journal">Journal</a></li>
+      <li><a href="#" data-section="analytics">Analytics</a></li>
+      <li><a href="#" data-section="reports">Reports</a></li>
+    </ul>
+
+    <div class="navbar-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <div class="account-container">
+        <button class="account-btn" id="accountBtn">Account ▾</button>
+        <div class="account-dropdown" id="accountDropdown">
+          <a href="#">Profile</a>
+          <a href="#">Settings</a>
+          <a href="#">Help</a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="logout">Logout</a>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Slide-in Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" data-section="dashboard">Dashboard</a>
+    <a href="#" data-section="log-mood">Log Mood</a>
+    <a href="#" data-section="journal">Journal</a>
+    <a href="#" data-section="analytics">Analytics</a>
+    <a href="#" data-section="reports">Reports</a>
+  </div>
+  <div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+  <main class="main-content">
+    <!-- ===================== DASHBOARD ===================== -->
+    <section class="section section-dashboard active" id="dashboard">
+      <div class="section-inner">
+        <h1 class="section-title gradient-text">Welcome back</h1>
+        <p class="section-subtitle">Track your emotional wellness, one day at a time.</p>
+
+        <div class="dashboard-grid">
+          <div class="card card-hero animate-in">
+            <div class="card-glow"></div>
+            <h3>How are you feeling today?</h3>
+            <p>Log your current mood to build your wellness insights.</p>
+            <button class="btn btn-primary" data-section="log-mood">Log Mood Now</button>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-card animate-in" style="--delay: 0.1s">
+              <span class="stat-value" id="streakCount">0</span>
+              <span class="stat-label">Day Streak</span>
+            </div>
+            <div class="stat-card animate-in" style="--delay: 0.2s">
+              <span class="stat-value" id="moodCount">0</span>
+              <span class="stat-label">Moods Logged</span>
+            </div>
+            <div class="stat-card animate-in" style="--delay: 0.3s">
+              <span class="stat-value" id="journalCount">0</span>
+              <span class="stat-label">Journal Entries</span>
+            </div>
+          </div>
+
+          <div class="recent-activity card animate-in" style="--delay: 0.4s">
+            <h4>Recent Activity</h4>
+            <div class="activity-list" id="recentActivity">
+              <p class="empty-state">No activity yet. Log your first mood to get started!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LOG MOOD ===================== -->
+    <section class="section section-log-mood" id="log-mood">
+      <div class="section-inner">
+        <h1 class="section-title">Log Your Mood</h1>
+        <p class="section-subtitle">Select how you're feeling and add optional notes.</p>
+
+        <div class="mood-form card animate-in">
+          <div class="mood-options">
+            <label class="mood-option">
+              <input type="radio" name="mood" value="joy">
+              <span class="mood-emoji">😊</span>
+              <span class="mood-name">Joy</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="calm">
+              <span class="mood-emoji">😌</span>
+              <span class="mood-name">Calm</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="sad">
+              <span class="mood-emoji">😢</span>
+              <span class="mood-name">Sad</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="anxious">
+              <span class="mood-emoji">😰</span>
+              <span class="mood-name">Anxious</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="energetic">
+              <span class="mood-emoji">⚡</span>
+              <span class="mood-name">Energetic</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="tired">
+              <span class="mood-emoji">😴</span>
+              <span class="mood-name">Tired</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="grateful">
+              <span class="mood-emoji">🙏</span>
+              <span class="mood-name">Grateful</span>
+            </label>
+            <label class="mood-option">
+              <input type="radio" name="mood" value="frustrated">
+              <span class="mood-emoji">😤</span>
+              <span class="mood-name">Frustrated</span>
+            </label>
+          </div>
+
+          <div class="intensity-group">
+            <label>Intensity: <span id="intensityValue">5</span>/10</label>
+            <input type="range" id="intensitySlider" min="1" max="10" value="5">
+          </div>
+
+          <div class="input-group">
+            <label>Notes (optional)</label>
+            <textarea id="moodNotes" rows="3" placeholder="What's on your mind?"></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-full" id="submitMoodBtn">Save Mood</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== JOURNAL ===================== -->
+    <section class="section section-journal" id="journal">
+      <div class="section-inner">
+        <h1 class="section-title">Journal</h1>
+        <p class="section-subtitle">Reflect and document your thoughts.</p>
+
+        <div class="journal-layout">
+          <div class="journal-form card animate-in">
+            <h4>New Entry</h4>
+            <div class="input-group">
+              <label>Title</label>
+              <input type="text" id="journalTitle" placeholder="Entry title">
+            </div>
+            <div class="input-group">
+              <label>How are you feeling?</label>
+              <select id="journalMood">
+                <option value="">Select mood</option>
+                <option value="joy">😊 Joy</option>
+                <option value="calm">😌 Calm</option>
+                <option value="sad">😢 Sad</option>
+                <option value="anxious">😰 Anxious</option>
+                <option value="energetic">⚡ Energetic</option>
+                <option value="tired">😴 Tired</option>
+                <option value="grateful">🙏 Grateful</option>
+                <option value="frustrated">😤 Frustrated</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Your thoughts</label>
+              <textarea id="journalContent" rows="6" placeholder="Write freely..."></textarea>
+            </div>
+            <button class="btn btn-primary btn-full" id="submitJournalBtn">Save Entry</button>
+          </div>
+
+          <div class="journal-entries card animate-in" style="--delay: 0.1s">
+            <h4>Your Entries</h4>
+            <div class="entries-list" id="journalEntries">
+              <p class="empty-state">No journal entries yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ANALYTICS ===================== -->
+    <section class="section section-analytics" id="analytics">
+      <div class="section-inner">
+        <h1 class="section-title">Analytics</h1>
+        <p class="section-subtitle">Insights from your mood and journal data.</p>
+
+        <div class="analytics-grid">
+          <div class="analytics-card card animate-in">
+            <h4>Mood Distribution</h4>
+            <div class="chart-placeholder" id="moodChart">
+              <div class="chart-bars" id="moodChartBars"></div>
+            </div>
+          </div>
+
+          <div class="analytics-card card animate-in" style="--delay: 0.1s">
+            <h4>Sentiment Overview</h4>
+            <div class="sentiment-display" id="sentimentDisplay">
+              <div class="sentiment-score">
+                <span class="score-value" id="sentimentScore">—</span>
+                <span class="score-label">Overall</span>
+              </div>
+              <p class="sentiment-desc" id="sentimentDesc">Log moods and journal entries to see sentiment analysis.</p>
+            </div>
+          </div>
+
+          <div class="analytics-card card full-width animate-in" style="--delay: 0.2s">
+            <h4>Mood Trend (Last 7 Days)</h4>
+            <div class="trend-chart" id="trendChart"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== REPORTS ===================== -->
+    <section class="section section-reports" id="reports">
+      <div class="section-inner">
+        <h1 class="section-title">Wellness Reports</h1>
+        <p class="section-subtitle">Export your data for reflection or sharing with professionals.</p>
+
+        <div class="reports-grid">
+          <div class="report-card card animate-in">
+            <div class="report-icon">📊</div>
+            <h4>Summary Report</h4>
+            <p>Overview of moods, streaks, and key insights.</p>
+            <button class="btn btn-outline" id="exportSummaryBtn">Export PDF</button>
+          </div>
+          <div class="report-card card animate-in" style="--delay: 0.1s">
+            <div class="report-icon">📅</div>
+            <h4>Weekly Report</h4>
+            <p>Last 7 days of mood and journal data.</p>
+            <button class="btn btn-outline" id="exportWeeklyBtn">Export PDF</button>
+          </div>
+          <div class="report-card card animate-in" style="--delay: 0.2s">
+            <div class="report-icon">📄</div>
+            <h4>Full Export</h4>
+            <p>Complete data as JSON for backup.</p>
+            <button class="btn btn-outline" id="exportJsonBtn">Export JSON</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Luminary — Your emotional wellness companion</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
